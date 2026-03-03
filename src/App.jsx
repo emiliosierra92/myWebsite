@@ -13,7 +13,7 @@ const accordionSections = [
     bgImage: dolphins,
     content: (
       <p>
-        I&apos;m Emilio. Miami.. Days: accessibility at Hard Rock Stadium.
+        I&apos;m Emilio. Miami. Days: accessibility at Hard Rock Stadium.
         Wheelchairs. ADA seats. Super Bowls. Beyonce tours. F1. Crowds move. I
         move them. Inclusive surfaces. Bilingual. Empathetic enough. Nights:
         HTML, CSS, JavaScript. Photoshop. Access and tech. That&apos;s it.
@@ -94,6 +94,7 @@ function AccordionItem({ id, title, isOpen, onToggle, children, bgImage }) {
 function App() {
   const [openSection, setOpenSection] = useState(null)
   const [openImage, setOpenImage] = useState(null)
+  const [showEmail, setShowEmail] = useState(false)
 
   const toggleSection = (name) => {
     setOpenSection(openSection === name ? null : name)
@@ -129,8 +130,12 @@ function App() {
             <h1>EmilioSierra.com</h1>
           </div>
 
-          <button className="contact-button" type="button">
-            Contact Me
+          <button
+            className="contact-button"
+            type="button"
+            onClick={() => setShowEmail(true)}
+          >
+            {showEmail ? 'emiliosierra@aol.com' : 'Contact Me'}
           </button>
         </header>
 
