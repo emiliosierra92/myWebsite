@@ -142,7 +142,7 @@ p {
 }
 
 .accordion-content.open {
-  max-height: 600px; /* increased to accommodate longer content */
+  max-height: none; /* allow content to fully expand */
   padding: 1rem;
 }
 
