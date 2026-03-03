@@ -198,7 +198,7 @@ function App() {
             type="button"
             onClick={() => setShowEmail((current) => !current)}
           >
-            {showEmail ? 'emiliosierra@aol.com' : 'Contact Me'}
+            {showEmail ? 'emiliosierra@aol.com' : 'Contact Me Now'}
           </button>
         </header>
 
