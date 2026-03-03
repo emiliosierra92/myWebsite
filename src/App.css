@@ -32,13 +32,23 @@ body {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.5rem 2rem; /* remove top padding */
+  padding: 0; /* remove outer padding and manage per-section padding for precise alignment */
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(4px);
   border: 1px solid rgba(200, 200, 200, 0.4);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ensure all main sections align to the same inner gutter as the header */
+.topdiv,
+.accordion,
+.carousel,
+.pitch,
+.footer {
+  padding: 0 1.5rem; /* same horizontal gutter used previously on .app */
+  box-sizing: border-box;
 }
 
 /* general text elements for uniformity */
