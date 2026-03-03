@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import logo from './assets/images/logo.png'
 import dolphins from './assets/images/dolphins.png'
@@ -57,6 +57,14 @@ const carouselImages = [
   { src: card, alt: 'Business card design' },
 ]
 
+const portfolioLinks = [
+  { label: 'Demo Site 1', href: 'https://example.com/demo-site-1' },
+  { label: 'Demo Site 2', href: 'https://example.com/demo-site-2' },
+  { label: 'Demo Site 3', href: 'https://example.com/demo-site-3' },
+  { label: 'Demo Site 4', href: 'https://example.com/demo-site-4' },
+  { label: 'Demo Site 5', href: 'https://example.com/demo-site-5' },
+]
+
 function AccordionItem({ id, title, isOpen, onToggle, children, bgImage }) {
   const contentId = `${id}-content`
   const buttonId = `${id}-trigger`
@@ -95,6 +103,8 @@ function App() {
   const [openSection, setOpenSection] = useState(null)
   const [openImage, setOpenImage] = useState(null)
   const [showEmail, setShowEmail] = useState(false)
+  const [isPortfolioOpen, setIsPortfolioOpen] = useState(false)
+  const portfolioMenuRef = useRef(null)
 
   const toggleSection = (name) => {
     setOpenSection(openSection === name ? null : name)
@@ -115,13 +125,66 @@ function App() {
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [openImage])
 
+  useEffect(() => {
+    const onClickOutside = (event) => {
+      if (
+        isPortfolioOpen &&
+        portfolioMenuRef.current &&
+        !portfolioMenuRef.current.contains(event.target)
+      ) {
+        setIsPortfolioOpen(false)
+      }
+    }
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsPortfolioOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', onClickOutside)
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('mousedown', onClickOutside)
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [isPortfolioOpen])
+
   return (
     <div className="site-shell">
       <main className="app" aria-label="Emilio Sierra portfolio">
         <header className="topdiv">
           <nav className="nav" aria-label="Primary navigation">
             <a href="#">Home</a>
-            <a href="#">Portfolio</a>
+            <div className="nav-dropdown" ref={portfolioMenuRef}>
+              <button
+                className="nav-link-button"
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded={isPortfolioOpen}
+                onClick={() => setIsPortfolioOpen((current) => !current)}
+              >
+                Portfolio
+              </button>
+              <div
+                className={`portfolio-dropdown${isPortfolioOpen ? ' open' : ''}`}
+                role="menu"
+                aria-label="Portfolio demo links"
+              >
+                {portfolioLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    role="menuitem"
+                    onClick={() => setIsPortfolioOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
             <a href="#">Blog</a>
           </nav>
 

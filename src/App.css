@@ -82,7 +82,8 @@
   gap: clamp(0.6rem, 1.4vw, 1rem);
 }
 
-.nav a {
+.nav a,
+.nav-link-button {
   font-family: var(--font-heading);
   color: var(--color-ink-800);
   text-decoration: none;
@@ -95,10 +96,55 @@
 }
 
 .nav a:hover,
-.nav a:focus-visible {
+.nav a:focus-visible,
+.nav-link-button:hover,
+.nav-link-button:focus-visible {
   color: var(--color-brand);
   background: var(--color-brand-soft);
   outline: none;
+}
+
+.nav-link-button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.portfolio-dropdown {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  min-width: 12rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-line);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 12px 30px -18px rgba(14, 24, 39, 0.65);
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 140ms ease, transform 140ms ease;
+  z-index: 10;
+}
+
+.portfolio-dropdown.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.portfolio-dropdown a {
+  display: block;
+  font-size: 0.9rem;
+  border-radius: 7px;
+  padding: 0.45rem 0.55rem;
 }
 
 .logo-container {
@@ -390,6 +436,15 @@
 
   .nav {
     justify-content: center;
+  }
+
+  .portfolio-dropdown {
+    left: 50%;
+    transform: translate(-50%, -4px);
+  }
+
+  .portfolio-dropdown.open {
+    transform: translate(-50%, 0);
   }
 
   .contact-button {
