@@ -46,6 +46,11 @@ body {
 }
 
 .contentdiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  min-width: 0;
   width: auto;
   height: auto;
 }
@@ -176,6 +181,10 @@ p {
 
 /* responsive tweaks */
 @media (max-width: 600px) {
+  .contentdiv {
+    gap: 0.5rem;
+  }
+
   .topdiv {
     flex-direction: column;
     text-align: center;
