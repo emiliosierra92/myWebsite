@@ -133,7 +133,7 @@ function App() {
           <button
             className="contact-button"
             type="button"
-            onClick={() => setShowEmail(true)}
+            onClick={() => setShowEmail((current) => !current)}
           >
             {showEmail ? 'emiliosierra@aol.com' : 'Contact Me'}
           </button>
