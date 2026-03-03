@@ -60,7 +60,7 @@ function App() {
           bgImage={dolphins}
         >
           <p>
-            I'm Emilio. Miami. Days: accessibility at Hard Rock Stadium. Wheelchairs. ADA seats. Super Bowls. Beyoncé tours. F1. Crowds move. I move them. Inclusive surfaces. Bilingual. Empathetic enough. Nights: HTML, CSS, JavaScript. Photoshop. Access and tech. That's it.
+            I'm Emilio. Miami.. Days: accessibility at Hard Rock Stadium. Wheelchairs. ADA seats. Super Bowls. Beyoncé tours. F1. Crowds move. I move them. Inclusive surfaces. Bilingual. Empathetic enough. Nights: HTML, CSS, JavaScript. Photoshop. Access and tech. That's it.
           </p>
         </AccordionItem>
 
