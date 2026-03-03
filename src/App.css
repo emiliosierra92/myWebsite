@@ -25,6 +25,10 @@ body {
   color: var(--text-color);
   line-height: 1.5;
   letter-spacing: 0.5px;
+
+  /* safe-area for notched devices */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 /* central content table/card */
@@ -49,6 +53,10 @@ body {
 .footer {
   padding: 0 1.5rem; /* same horizontal gutter used previously on .app */
   box-sizing: border-box;
+  /* include safe-area inset as well
+     so content doesn't appear under notch */
+  padding-left: calc(1.5rem + env(safe-area-inset-left));
+  padding-right: calc(1.5rem + env(safe-area-inset-right));
 }
 
 /* general text elements for uniformity */
