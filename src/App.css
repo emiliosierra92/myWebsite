@@ -178,6 +178,33 @@ p {
   }
 }
 
+/* very narrow portrait phones */
+@media (max-width: 400px) {
+  .app, .topdiv, .accordion, .carousel, .pitch, .footer {
+    padding: 0 0.75rem !important;
+  }
+
+  .carousel-img {
+    height: 4.5rem;
+  }
+
+  .logo {
+    max-height: 3rem;
+  }
+
+  .nav a {
+    font-size: 0.85rem;
+  }
+
+  .accordion-header {
+    padding: 0.75rem;
+  }
+
+  .accordion-content p {
+    font-size: 0.95rem;
+  }
+}
+
 /* carousel styles */
 .carousel {
   display: flex;
