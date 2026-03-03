@@ -52,64 +52,66 @@ function App() {
         <button className="contact-button">Contact Me</button>
       </div>
 
-      <div className="accordion">
-        <AccordionItem
-          title="About Emilio"
-          isOpen={openSection === 'about'}
-          onClick={() => toggleSection('about')}
-          bgImage={dolphins}
-        >
+      <div className="contentdiv">
+        <div className="accordion">
+          <AccordionItem
+            title="About Emilio"
+            isOpen={openSection === 'about'}
+            onClick={() => toggleSection('about')}
+            bgImage={dolphins}
+          >
+            <p>
+              I'm Emilio. Miami.. Days: accessibility at Hard Rock Stadium. Wheelchairs. ADA seats. Super Bowls. Beyoncé tours. F1. Crowds move. I move them. Inclusive surfaces. Bilingual. Empathetic enough. Nights: HTML, CSS, JavaScript. Photoshop. Access and tech. That's it.
+            </p>
+          </AccordionItem>
+
+          <AccordionItem
+            title="Services"
+            isOpen={openSection === 'services'}
+            onClick={() => toggleSection('services')}
+            bgImage={miami}
+          >
+            <p>
+              <strong>Web Development & Digital Accessibility</strong><br/>
+              Development of responsive websites using HTML, CSS, and JavaScript. Emphasis on performance, quality assurance, debugging, and WCAG-compliant accessibility.
+              <br/><br/>
+              <strong>Graphic Design & Visual Content Creation</strong><br/>
+              Image editing and creation in Photoshop. Services include retouching, manipulation, optimization, and production of branded or event-specific visuals.
+              <br/><br/>
+              <strong>Videography & Broadcast Media Production</strong><br/>
+              Event videography, live streaming setup, camera operation, and post-production. Includes audio/video editing for sports, concerts, festivals, or promotional material.
+            </p>
+          </AccordionItem>
+        </div>
+
+        {/* carousel section */}
+        <div className="carousel">
+          {[miami, dolphins, beach, card].map((src, idx) => (
+            <img
+              key={idx}
+              src={src}
+              className="carousel-img"
+              onClick={() => setOpenImage(src)}
+              alt={`carousel-${idx}`}
+            />
+          ))}
+        </div>
+
+        <div className="pitch">
           <p>
-            I'm Emilio. Miami.. Days: accessibility at Hard Rock Stadium. Wheelchairs. ADA seats. Super Bowls. Beyoncé tours. F1. Crowds move. I move them. Inclusive surfaces. Bilingual. Empathetic enough. Nights: HTML, CSS, JavaScript. Photoshop. Access and tech. That's it.
+            “Even in challenging times — whether markets shift or news headlines change — your brand deserves clarity, confidence, and creative impact. I build websites and visuals that don’t just survive uncertainty — they stand out, grow trust, and open doors.” -Emilio Sierra
           </p>
-        </AccordionItem>
+        </div>
 
-        <AccordionItem
-          title="Services"
-          isOpen={openSection === 'services'}
-          onClick={() => toggleSection('services')}
-          bgImage={miami}
-        >
-          <p>
-            <strong>Web Development & Digital Accessibility</strong><br/>
-            Development of responsive websites using HTML, CSS, and JavaScript. Emphasis on performance, quality assurance, debugging, and WCAG-compliant accessibility.
-            <br/><br/>
-            <strong>Graphic Design & Visual Content Creation</strong><br/>
-            Image editing and creation in Photoshop. Services include retouching, manipulation, optimization, and production of branded or event-specific visuals.
-            <br/><br/>
-            <strong>Videography & Broadcast Media Production</strong><br/>
-            Event videography, live streaming setup, camera operation, and post-production. Includes audio/video editing for sports, concerts, festivals, or promotional material.
-          </p>
-        </AccordionItem>
-      </div>
-
-      {/* carousel section */}
-      <div className="carousel">
-        {[miami, dolphins, beach, card].map((src, idx) => (
-          <img
-            key={idx}
-            src={src}
-            className="carousel-img"
-            onClick={() => setOpenImage(src)}
-            alt={`carousel-${idx}`}
-          />
-        ))}
-      </div>
-
-      <div className="pitch">
-        <p>
-          “Even in challenging times — whether markets shift or news headlines change — your brand deserves clarity, confidence, and creative impact. I build websites and visuals that don’t just survive uncertainty — they stand out, grow trust, and open doors.” -Emilio Sierra
-        </p>
-      </div>
-
-      <div className="footer">
-        <nav className="social-links">
-          <a href="https://www.linkedin.com/in/emiliosierra/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://www.instagram.com/reydehonduras/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://www.youtube.com/@VAMPIRE6KING9" target="_blank" rel="noopener noreferrer">YouTube</a>
-          <a href="https://www.twitch.tv/vampire6king9" target="_blank" rel="noopener noreferrer">Twitch</a>
-          <a href="https://www.paypal.com/donate/?hosted_button_id=JUB8DGZM5F7EG" target="_blank" rel="noopener noreferrer">PayPal</a>
-        </nav>
+        <div className="footer">
+          <nav className="social-links">
+            <a href="https://www.linkedin.com/in/emiliosierra/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.instagram.com/reydehonduras/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.youtube.com/@VAMPIRE6KING9" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a href="https://www.twitch.tv/vampire6king9" target="_blank" rel="noopener noreferrer">Twitch</a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=JUB8DGZM5F7EG" target="_blank" rel="noopener noreferrer">PayPal</a>
+          </nav>
+        </div>
       </div>
 
       {openImage && (

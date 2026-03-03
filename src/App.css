@@ -45,6 +45,11 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.contentdiv {
+  width: auto;
+  height: auto;
+}
+
 /* ensure all main sections align to the same inner gutter as the header */
 .topdiv,
 .accordion,
