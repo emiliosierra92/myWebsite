@@ -605,7 +605,6 @@
 
 .demo-one-panel a,
 .demo-one-specials a,
-.demo-one-contactbar a,
 .demo-one-geolocation a {
   display: inline-block;
   margin-top: 0.45rem;
@@ -750,6 +749,7 @@
 
 .demo-one-contactbar {
   gap: 0.75rem;
+  align-items: stretch;
 }
 
 .demo-one-contact-social {
@@ -758,6 +758,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem 0.85rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #d7cbbd;
 }
 
 .demo-one-contact-social a {
@@ -768,6 +770,9 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .demo-one-contact-columns {
@@ -778,11 +783,8 @@
 }
 
 .demo-one-contact-columns > div {
-  border: 1px solid #d7cbbd;
-  border-radius: 10px;
-  background: #f4eadc;
-  padding: 0.7rem;
-  text-align: center;
+  padding: 0.2rem 0.15rem;
+  text-align: left;
 }
 
 .demo-one-contact-columns h3 {
