@@ -479,6 +479,13 @@
   justify-self: start;
 }
 
+.demo-one-top-logo {
+  justify-self: start;
+  width: auto;
+  max-height: 52px;
+  object-fit: contain;
+}
+
 .demo-one-topdiv a {
   text-decoration: none;
   color: #a33622;
