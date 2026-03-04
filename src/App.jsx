@@ -454,18 +454,20 @@ function App() {
   return (
     <div className={`site-shell${isDemoSiteOne ? ' site-shell-demo-one' : ''}`}>
       <main className={`app${isDemoSiteOne ? ' app-demo-one' : ''}`} aria-label="Emilio Sierra portfolio">
-        <SiteHeader
-          isPortfolioOpen={isPortfolioOpen}
-          onPortfolioToggle={() => setIsPortfolioOpen((current) => !current)}
-          onPortfolioClose={() => setIsPortfolioOpen(false)}
-          onPrimaryNavigate={() => {
-            setIsPortfolioOpen(false)
-            setOpenImage(null)
-          }}
-          portfolioMenuRef={portfolioMenuRef}
-          showEmail={showEmail}
-          onContactToggle={() => setShowEmail((current) => !current)}
-        />
+        {!isDemoSiteOne && (
+          <SiteHeader
+            isPortfolioOpen={isPortfolioOpen}
+            onPortfolioToggle={() => setIsPortfolioOpen((current) => !current)}
+            onPortfolioClose={() => setIsPortfolioOpen(false)}
+            onPrimaryNavigate={() => {
+              setIsPortfolioOpen(false)
+              setOpenImage(null)
+            }}
+            portfolioMenuRef={portfolioMenuRef}
+            showEmail={showEmail}
+            onContactToggle={() => setShowEmail((current) => !current)}
+          />
+        )}
 
         <div className="contentdiv">
           <Routes>
