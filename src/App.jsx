@@ -298,6 +298,18 @@ function BlogPage() {
             <p>
               As of today, Tuesday, March 3, 2026, my website has officially launched and is live. Thank you, everyone!
             </p>
+            <p>
+              Special thanks to my coding Instructor Angela Yu for sharpening my
+              skills, and thanks to my best friend Christian Valdes for talking
+              me into taking her course on Udemy.com.{' '}
+              <a
+                href="https://www.linkedin.com/in/angela-yu1/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                #AngelaYuThankYou
+              </a>
+            </p>
           </div>
         </div>
       </article>
