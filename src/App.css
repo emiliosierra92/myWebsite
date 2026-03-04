@@ -372,6 +372,12 @@
 .blog-launch-title {
   text-align: center;
   font-weight: 800;
+  margin-bottom: 0.7rem !important;
+}
+
+.blog-post-media {
+  display: flex;
+  flex-direction: column;
 }
 
 .blog-post-content {
