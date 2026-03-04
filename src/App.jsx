@@ -290,12 +290,10 @@ function HomePage({ openSection, onToggleSection, onOpenImage }) {
 function BlogPage() {
   return (
     <section className="blog" aria-label="Blog posts">
-      <article className="blog-post">
+      <article className="blog-post blog-launch-post">
         <div className="blog-post-content">
-          <div className="blog-post-media">
-            <h2 className="blog-launch-title">EmilioSierra.com is Born.</h2>
-            <img src={card} alt="Mock blog post visual" className="blog-post-image" />
-          </div>
+          <h2 className="blog-launch-title">EmilioSierra.com is Born.</h2>
+          <img src={card} alt="Mock blog post visual" className="blog-post-image" />
           <div className="blog-post-text">
             <p>
               Today, Tuesday, March 3, 2026 My Website has officially launched
