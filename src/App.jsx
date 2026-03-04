@@ -125,38 +125,6 @@ const socialLinks = [
   },
 ]
 
-const demoOneNavLinks = ['About us', 'Menu', 'Specials', 'La Piccola', 'Find Us']
-
-const demoOneFeatureCards = [
-  {
-    title: 'Lunch 11:00 am to 3:00 pm',
-    subtitle: 'Take out - Dinner',
-    cta: 'VIEW MENU',
-    image: xmas,
-  },
-  {
-    title: 'Sunday Brunch',
-    subtitle: 'Fresh bakery and coffee',
-    cta: 'VIEW MENU',
-    image: card,
-  },
-]
-
-const demoOneInfoTiles = [
-  {
-    title: 'Discover a hidden',
-    heading: 'Gem of Miami',
-    subheading: 'ITALIAN CUISINE',
-    cta: 'MORE INFO',
-  },
-  {
-    title: 'Discover our',
-    heading: 'Special Offers',
-    subheading: 'Seasonal family deals',
-    cta: 'VIEW OFFERS',
-  },
-]
-
 function AccordionItem({ id, title, isOpen, onToggle, children, bgImage }) {
   const contentId = `${id}-content`
   const buttonId = `${id}-trigger`
@@ -356,82 +324,39 @@ function BlogPage() {
 
 function DemoSiteOnePage() {
   return (
-    <section className="demo-one" aria-label="Demo Site 1 restaurant template">
-      <header className="demo-one-topbar">
-        <p>KENDALL</p>
-        <a href="tel:+13052715441">(305) 271 - 5441</a>
-      </header>
-
-      <nav className="demo-one-nav" aria-label="Restaurant section navigation">
-        {demoOneNavLinks.map((item) => (
-          <a key={item} href="#menu">
-            {item}
-          </a>
-        ))}
-      </nav>
-
-      <article className="demo-one-hero">
-        <img src={miami} alt="Restaurant front mood shot" className="demo-one-hero-image" />
-        <div className="demo-one-hero-copy">
-          <p className="demo-one-hero-kicker">Welcome to</p>
-          <h2>DI PAPA&apos;S</h2>
-          <p>
-            Since opening our doors in 1997 at the same location, we&apos;ve
-            prided ourselves in keeping the Italian tradition and family
-            atmosphere alive and well.
-          </p>
-          <p>
-            Di Papa&apos;s remains an icon today and still sets the standard for
-            the best pizza, New York style in Kendall, Miami.
-          </p>
-        </div>
-      </article>
-
-      <section id="menu" className="demo-one-feature-grid" aria-label="Menu highlights">
-        {demoOneFeatureCards.map((item) => (
-          <article key={item.title} className="demo-one-feature-card">
-            <img src={item.image} alt={`${item.title} feature`} />
-            <div>
-              <h3>{item.title}</h3>
-              <p>{item.subtitle}</p>
-              <a href="#menu">{item.cta}</a>
-            </div>
-          </article>
-        ))}
+    <section className="demo-one-layout" aria-label="Demo Site 1 layout scaffold">
+      <section id="topdiv" className="demo-one-block">
+        <h2>topdiv</h2>
       </section>
-
-      <section className="demo-one-info-tiles" aria-label="Restaurant offers">
-        {demoOneInfoTiles.map((item) => (
-          <article key={item.heading} className="demo-one-info-tile">
-            <p>{item.title}</p>
-            <h3>{item.heading}</h3>
-            <h4>{item.subheading}</h4>
-            <a href="#offers">{item.cta}</a>
-          </article>
-        ))}
+      <section id="covervideo" className="demo-one-block demo-one-block-video">
+        <h2>covervideo</h2>
       </section>
-
-      <section id="offers" className="demo-one-bottom-grid" aria-label="Hours and contact">
-        <article className="demo-one-hours">
-          <h3>Business Hours</h3>
-          <p>Sunday to Thursday</p>
-          <strong>6 am to 10 pm</strong>
-          <p>Fridays and Saturdays</p>
-          <strong>6 am to 10 pm</strong>
-        </article>
-        <article className="demo-one-careers">
-          <h3>Work with us</h3>
-          <p>Join our team!</p>
-          <a href="#offers">Send Resume</a>
-        </article>
-        <article className="demo-one-contact">
-          <h3>OUR LOCATION</h3>
-          <p>9877 N Kendall Dr, Miami, FL 33176</p>
-          <h3>PHONE NUMBER</h3>
-          <p>(305) 271 - 5441</p>
-          <h3>E-MAIL</h3>
-          <p>dipapasitalian@gmail.com</p>
-        </article>
+      <section id="about-us" className="demo-one-block">
+        <h2>about us</h2>
+      </section>
+      <section id="lunch-time" className="demo-one-block">
+        <h2>lunch time</h2>
+      </section>
+      <section id="menu" className="demo-one-block">
+        <h2>menu</h2>
+      </section>
+      <section id="brunch" className="demo-one-block">
+        <h2>brunch</h2>
+      </section>
+      <section id="specialoffers" className="demo-one-block">
+        <h2>specialoffers</h2>
+      </section>
+      <section id="business" className="demo-one-block">
+        <h2>business</h2>
+      </section>
+      <section id="contactbar" className="demo-one-block">
+        <h2>contactbar</h2>
+      </section>
+      <section id="geolocation" className="demo-one-block">
+        <h2>geolocation</h2>
+      </section>
+      <section id="footer" className="demo-one-block">
+        <h2>footer</h2>
       </section>
     </section>
   )
@@ -474,6 +399,8 @@ function PortfolioDemoPage() {
 }
 
 function App() {
+  const location = useLocation()
+  const isDemoSiteOne = location.pathname === '/portfolio/demo-site-1'
   const [openSection, setOpenSection] = useState(null)
   const [openImage, setOpenImage] = useState(null)
   const [showEmail, setShowEmail] = useState(false)
@@ -525,8 +452,8 @@ function App() {
   }, [isPortfolioOpen])
 
   return (
-    <div className="site-shell">
-      <main className="app" aria-label="Emilio Sierra portfolio">
+    <div className={`site-shell${isDemoSiteOne ? ' site-shell-demo-one' : ''}`}>
+      <main className={`app${isDemoSiteOne ? ' app-demo-one' : ''}`} aria-label="Emilio Sierra portfolio">
         <SiteHeader
           isPortfolioOpen={isPortfolioOpen}
           onPortfolioToggle={() => setIsPortfolioOpen((current) => !current)}
