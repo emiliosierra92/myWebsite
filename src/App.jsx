@@ -525,6 +525,29 @@ function DemoSiteOnePage() {
 }
 
 function DemoSiteTwoPage() {
+  const luckyBirdVideos = [
+    {
+      id: 'video-1',
+      title: 'Lucky Bird Morning Chirps',
+      href: 'https://www.youtube.com/@VAMPIRE6KING9',
+    },
+    {
+      id: 'video-2',
+      title: 'Cockatiel Training Basics',
+      href: 'https://www.youtube.com/results?search_query=cockatiel+training+basics',
+    },
+    {
+      id: 'video-3',
+      title: 'Lucky Bird Singing Session',
+      href: 'https://www.youtube.com/results?search_query=lucky+bird+cockatiel+sings',
+    },
+    {
+      id: 'video-4',
+      title: 'Cockatiel Care Routine',
+      href: 'https://www.youtube.com/results?search_query=cockatiel+care+routine',
+    },
+  ]
+
   return (
     <section className="demo-two-layout" aria-label="Demo Site 2 layout scaffold">
       <section id="topdiv" className="demo-two-topdiv">
@@ -534,7 +557,6 @@ function DemoSiteTwoPage() {
 
         <div className="demo-two-brand-block">
           <img src={luckybird} alt="Lucky Bird hero image" className="demo-two-hero-image" />
-          <h1 className="demo-two-brand-title">LUCKY BIRD</h1>
         </div>
 
         <a href="#shop" className="demo-two-shop-link" aria-label="Shop now">
@@ -543,6 +565,51 @@ function DemoSiteTwoPage() {
             <path d="M8 8V7a4 4 0 1 1 8 0v1h2.1a1 1 0 0 1 1 .89l1.2 11A1 1 0 0 1 19.31 21H4.69a1 1 0 0 1-.99-1.11l1.2-11a1 1 0 0 1 1-.89H8Zm2 0h4V7a2 2 0 1 0-4 0v1Zm-2 4a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2H8Zm8 0a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2H16Z" />
           </svg>
         </a>
+      </section>
+
+      <section className="demo-two-contentdiv" aria-label="Cockatiel info and videos">
+        <aside className="demo-two-video-column">
+          <h2>Lucky Bird YouTube Videos</h2>
+          <div className="demo-two-video-list">
+            {luckyBirdVideos.map((video) => (
+              <a
+                key={video.id}
+                href={video.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="demo-two-video-card"
+              >
+                <img src={luckybird} alt={`${video.title} thumbnail`} className="demo-two-video-thumb" />
+                <span>{video.title}</span>
+              </a>
+            ))}
+          </div>
+        </aside>
+
+        <article className="demo-two-infodump">
+          <h2>Cockatiel Infodump</h2>
+          <p>
+            Cockatiels are small parrots known for social personalities, expressive crest
+            feathers, and whistling ability. Most thrive on daily interaction and should not
+            be left isolated for long periods.
+          </p>
+          <p>
+            A solid cockatiel setup starts with a wide cage, natural wood perches of varied
+            diameters, safe chew toys, and at least 10 to 12 hours of sleep in a dark, quiet
+            space. Diet should center on quality pellets, supplemented with leafy greens,
+            vegetables, and a measured amount of seed.
+          </p>
+          <p>
+            Cockatiels communicate through posture and sound. Crest up often means alert or
+            curious, while a flattened crest can signal stress. Gentle, consistent handling and
+            short training sessions with rewards help build trust and reduce fear behaviors.
+          </p>
+          <p>
+            Common health priorities include clean air quality, regular nail and beak checks,
+            and routine avian-vet visits. Avoid nonstick pan fumes, smoke, aerosol sprays, and
+            scented candles around birds, since their respiratory systems are highly sensitive.
+          </p>
+        </article>
       </section>
     </section>
   )
