@@ -325,38 +325,102 @@ function BlogPage() {
 function DemoSiteOnePage() {
   return (
     <section className="demo-one-layout" aria-label="Demo Site 1 layout scaffold">
-      <section id="topdiv" className="demo-one-block">
-        <h2>topdiv</h2>
+      <section id="topdiv" className="demo-one-block demo-one-topdiv">
+        <p>KENDALL</p>
+        <a href="tel:+13052715441">(305) 271 - 5441</a>
       </section>
-      <section id="covervideo" className="demo-one-block demo-one-block-video">
-        <h2>covervideo</h2>
+
+      <section className="demo-one-block demo-one-navwrap">
+        <nav className="demo-one-nav" aria-label="Demo Site 1 navigation">
+          <a href="#about-us">About us</a>
+          <a href="#menu">Menu</a>
+          <a href="#specialoffers">Specials</a>
+          <a href="#brunch">Cafe</a>
+          <a href="#geolocation">Find us</a>
+        </nav>
       </section>
-      <section id="about-us" className="demo-one-block">
+
+      <section id="covervideo" className="demo-one-block demo-one-covervideo">
+        <div className="demo-one-cover-overlay">
+          <p>Welcome to</p>
+          <h2>CASA SIERRA</h2>
+        </div>
+      </section>
+
+      <section id="about-us" className="demo-one-block demo-one-about">
         <h2>about us</h2>
+        <p>
+          Since opening our doors in this neighborhood, our family-style Italian
+          kitchen has focused on fresh ingredients, warm service, and classic
+          recipes with a modern Miami vibe.
+        </p>
+        <p>
+          This is mock content for your template. Replace text, photos, and links
+          later with your own restaurant or brand details.
+        </p>
       </section>
-      <section id="lunch-time" className="demo-one-block">
-        <h2>lunch time</h2>
+
+      <section id="lunch-time" className="demo-one-block demo-one-split">
+        <article className="demo-one-panel">
+          <h2>lunch time</h2>
+          <p>Lunch 11:00 am to 3:00 pm</p>
+          <p>Take out - Dinner</p>
+          <a href="#menu">View menu</a>
+        </article>
+        <article id="brunch" className="demo-one-panel">
+          <h2>brunch</h2>
+          <p>Sunday brunch available</p>
+          <p>Fresh bakery and coffee</p>
+          <a href="#menu">View menu</a>
+        </article>
       </section>
-      <section id="menu" className="demo-one-block">
+
+      <section id="menu" className="demo-one-block demo-one-menu">
         <h2>menu</h2>
+        <div className="demo-one-menu-grid">
+          <article>
+            <h3>Pizza Classics</h3>
+            <p>Margherita, Pepperoni, Garden Veggie</p>
+          </article>
+          <article>
+            <h3>Pasta Favorites</h3>
+            <p>Alfredo, Bolognese, Seafood Linguine</p>
+          </article>
+          <article>
+            <h3>House Specials</h3>
+            <p>Family combos, lunch deals, chef picks</p>
+          </article>
+        </div>
       </section>
-      <section id="brunch" className="demo-one-block">
-        <h2>brunch</h2>
+
+      <section id="specialoffers" className="demo-one-block demo-one-specials">
+        <article>
+          <h2>specialoffers</h2>
+          <p>Discover our weekly specials and family bundles.</p>
+          <a href="#contactbar">View offers</a>
+        </article>
+        <article>
+          <h2>business</h2>
+          <p>Sunday to Thursday: 6 am to 10 pm</p>
+          <p>Fridays and Saturdays: 6 am to 10 pm</p>
+        </article>
       </section>
-      <section id="specialoffers" className="demo-one-block">
-        <h2>specialoffers</h2>
-      </section>
-      <section id="business" className="demo-one-block">
-        <h2>business</h2>
-      </section>
-      <section id="contactbar" className="demo-one-block">
+
+      <section id="contactbar" className="demo-one-block demo-one-contactbar">
         <h2>contactbar</h2>
+        <p>Need catering or reservations? We can help.</p>
+        <a href="mailto:hello@casasierra.com">hello@casasierra.com</a>
       </section>
-      <section id="geolocation" className="demo-one-block">
+
+      <section id="geolocation" className="demo-one-block demo-one-geolocation">
         <h2>geolocation</h2>
+        <p>1234 Sample Avenue, Miami, FL 33176</p>
+        <a href="#geolocation">Open map</a>
       </section>
-      <section id="footer" className="demo-one-block">
-        <h2>footer</h2>
+
+      <section id="footer" className="demo-one-block demo-one-footer">
+        <p>Enjoy the best food to share with your family</p>
+        <small>© Casa Sierra Mock Template 2026</small>
       </section>
     </section>
   )
