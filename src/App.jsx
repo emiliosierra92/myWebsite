@@ -532,7 +532,10 @@ function DemoSiteTwoPage() {
           Home
         </Link>
 
-        <img src={luckybird} alt="Lucky Bird hero image" className="demo-two-hero-image" />
+        <div className="demo-two-brand-block">
+          <img src={luckybird} alt="Lucky Bird hero image" className="demo-two-hero-image" />
+          <h1 className="demo-two-brand-title">LUCKY BIRD</h1>
+        </div>
 
         <a href="#shop" className="demo-two-shop-link" aria-label="Shop now">
           <span>Shop Now</span>
