@@ -428,6 +428,10 @@
   gap: 1rem;
 }
 
+.demo-one-empty {
+  min-height: 58vh;
+}
+
 .demo-one-hero {
   border-radius: var(--radius-m);
   border: 1px solid rgba(84, 167, 255, 0.22);
