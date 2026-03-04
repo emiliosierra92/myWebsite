@@ -296,8 +296,7 @@ function BlogPage() {
           <img src={card} alt="Mock blog post visual" className="blog-post-image" />
           <div className="blog-post-text">
             <p>
-              Today, Tuesday, March 3, 2026 My Website has officially launched
-              live on the internet. Thank you, Everyone!
+              As of today, Tuesday, March 3, 2026, my website has officially launched and is live. Thank you, everyone!
             </p>
           </div>
         </div>
