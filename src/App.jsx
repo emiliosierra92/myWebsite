@@ -562,6 +562,7 @@ function PortfolioDemoPage() {
 function App() {
   const location = useLocation()
   const isDemoSiteOne = location.pathname === '/portfolio/demo-site-1'
+  const isDemoSiteTwo = location.pathname === '/portfolio/demo-site-2'
   const [openSection, setOpenSection] = useState(null)
   const [openImage, setOpenImage] = useState(null)
   const [showEmail, setShowEmail] = useState(false)
@@ -613,7 +614,9 @@ function App() {
   }, [isPortfolioOpen])
 
   return (
-    <div className={`site-shell${isDemoSiteOne ? ' site-shell-demo-one' : ''}`}>
+    <div
+      className={`site-shell${isDemoSiteOne ? ' site-shell-demo-one' : ''}${isDemoSiteTwo ? ' site-shell-demo-two' : ''}`}
+    >
       <main className={`app${isDemoSiteOne ? ' app-demo-one' : ''}`} aria-label="Emilio Sierra portfolio">
         {!isDemoSiteOne && (
           <SiteHeader
