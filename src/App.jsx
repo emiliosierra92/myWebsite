@@ -6,6 +6,9 @@ import dolphins from './assets/images/dolphins.png'
 import miami from './assets/images/miami.png'
 import beach from './assets/images/beach.webp'
 import card from './assets/images/card.png'
+import mermaid from './assets/images/mermaid.png'
+import shark from './assets/images/shark.jpeg'
+import xmas from './assets/images/xmas.png'
 
 const accordionSections = [
   {
@@ -56,6 +59,9 @@ const carouselImages = [
   { src: dolphins, alt: 'Dolphins image' },
   { src: beach, alt: 'Beach scene' },
   { src: card, alt: 'Business card design' },
+  { src: mermaid, alt: 'Mermaid illustration' },
+  { src: shark, alt: 'Shark image' },
+  { src: xmas, alt: 'Christmas themed image' },
 ]
 
 const portfolioLinks = [
