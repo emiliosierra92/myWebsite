@@ -484,9 +484,25 @@ function DemoSiteOnePage() {
       </section>
 
       <section id="contactbar" className="demo-one-block demo-one-contactbar">
-        <h2>contactbar</h2>
-        <p>Need catering or reservations? We can help.</p>
-        <a href="mailto:hello@casasierra.com">hello@casasierra.com</a>
+        <div className="demo-one-contact-social">
+          <a href="#contactbar">Facebook</a>
+          <a href="#contactbar">Instagram</a>
+          <a href="#contactbar">TikTok</a>
+        </div>
+        <div className="demo-one-contact-columns">
+          <article>
+            <h3>Our Location</h3>
+            <p>1234 Sample Avenue, Miami, FL 33176</p>
+          </article>
+          <article>
+            <h3>Our Phone Number</h3>
+            <p>(305) 305 - 3005</p>
+          </article>
+          <article>
+            <h3>Our Email</h3>
+            <p>hello@pizzaking.com</p>
+          </article>
+        </div>
       </section>
 
       <section id="geolocation" className="demo-one-block demo-one-geolocation">
