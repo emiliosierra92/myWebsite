@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link, Navigate, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import './App.css'
 import logo from './assets/images/logo.png'
 import dolphins from './assets/images/dolphins.png'
@@ -58,11 +59,54 @@ const carouselImages = [
 ]
 
 const portfolioLinks = [
-  { label: 'Demo Site 1', href: 'https://example.com/demo-site-1' },
-  { label: 'Demo Site 2', href: 'https://example.com/demo-site-2' },
-  { label: 'Demo Site 3', href: 'https://example.com/demo-site-3' },
-  { label: 'Demo Site 4', href: 'https://example.com/demo-site-4' },
-  { label: 'Demo Site 5', href: 'https://example.com/demo-site-5' },
+  { id: 'demo-site-1', label: 'Demo Site 1', to: '/portfolio/demo-site-1' },
+  { id: 'demo-site-2', label: 'Demo Site 2', to: '/portfolio/demo-site-2' },
+  { id: 'demo-site-3', label: 'Demo Site 3', to: '/portfolio/demo-site-3' },
+  { id: 'demo-site-4', label: 'Demo Site 4', to: '/portfolio/demo-site-4' },
+  { id: 'demo-site-5', label: 'Demo Site 5', to: '/portfolio/demo-site-5' },
+]
+
+const portfolioDemos = [
+  {
+    id: 'demo-site-1',
+    title: 'Demo Site 1',
+    image: miami,
+    imageAlt: 'Preview of demo site 1',
+    summary:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat sem sit amet orci dictum, in faucibus felis vulputate.',
+  },
+  {
+    id: 'demo-site-2',
+    title: 'Demo Site 2',
+    image: dolphins,
+    imageAlt: 'Preview of demo site 2',
+    summary:
+      'Integer iaculis risus et mi luctus, vel aliquet justo malesuada. Suspendisse potenti. Sed tempus nisi non sem volutpat ultrices.',
+  },
+  {
+    id: 'demo-site-3',
+    title: 'Demo Site 3',
+    image: beach,
+    imageAlt: 'Preview of demo site 3',
+    summary:
+      'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae nisi at lorem porttitor dignissim.',
+  },
+  {
+    id: 'demo-site-4',
+    title: 'Demo Site 4',
+    image: card,
+    imageAlt: 'Preview of demo site 4',
+    summary:
+      'Nunc congue eros sed magna faucibus fermentum. Duis ultrices, ligula non lobortis elementum, turpis lacus congue justo, a vehicula nisl magna id metus.',
+  },
+  {
+    id: 'demo-site-5',
+    title: 'Demo Site 5',
+    image: miami,
+    imageAlt: 'Preview of demo site 5',
+    summary:
+      'Curabitur non aliquam massa. Nulla facilisi. Proin sit amet nisl ac risus mattis pharetra non non eros.',
+  },
 ]
 
 const socialLinks = [
@@ -111,27 +155,31 @@ function AccordionItem({ id, title, isOpen, onToggle, children, bgImage }) {
 }
 
 function SiteHeader({
-  currentPage,
   isPortfolioOpen,
   onPortfolioToggle,
-  onNavigate,
+  onPortfolioClose,
+  onPrimaryNavigate,
   portfolioMenuRef,
   showEmail,
   onContactToggle,
 }) {
+  const location = useLocation()
+  const isPortfolioRoute = location.pathname.startsWith('/portfolio')
+
   return (
     <header className="topdiv">
       <nav className="nav" aria-label="Primary navigation">
-        <button
-          className={`nav-link-button${currentPage === 'home' ? ' active' : ''}`}
-          type="button"
-          onClick={() => onNavigate('home')}
+        <NavLink
+          to="/"
+          className={({ isActive }) => `nav-link-button${isActive ? ' active' : ''}`}
+          end
+          onClick={onPrimaryNavigate}
         >
           Home
-        </button>
+        </NavLink>
         <div className="nav-dropdown" ref={portfolioMenuRef}>
           <button
-            className="nav-link-button"
+            className={`nav-link-button${isPortfolioRoute ? ' active' : ''}`}
             type="button"
             aria-haspopup="menu"
             aria-expanded={isPortfolioOpen}
@@ -145,25 +193,27 @@ function SiteHeader({
             aria-label="Portfolio demo links"
           >
             {portfolioLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                to={link.to}
                 role="menuitem"
+                onClick={() => {
+                  onPrimaryNavigate()
+                  onPortfolioClose()
+                }}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
-        <button
-          className={`nav-link-button${currentPage === 'blog' ? ' active' : ''}`}
-          type="button"
-          onClick={() => onNavigate('blog')}
+        <NavLink
+          to="/blog"
+          className={({ isActive }) => `nav-link-button${isActive ? ' active' : ''}`}
+          onClick={onPrimaryNavigate}
         >
           Blog
-        </button>
+        </NavLink>
       </nav>
 
       <div className="logo-container">
@@ -192,8 +242,113 @@ function SocialFooter() {
   )
 }
 
+function HomePage({ openSection, onToggleSection, onOpenImage }) {
+  return (
+    <>
+      <section className="accordion" aria-label="About and services">
+        {accordionSections.map((section) => (
+          <AccordionItem
+            key={section.id}
+            id={section.id}
+            title={section.title}
+            isOpen={openSection === section.id}
+            onToggle={() => onToggleSection(section.id)}
+            bgImage={section.bgImage}
+          >
+            {section.content}
+          </AccordionItem>
+        ))}
+      </section>
+
+      <section className="carousel" aria-label="Portfolio images">
+        {carouselImages.map((image, idx) => (
+          <button
+            key={image.alt}
+            className="carousel-card"
+            type="button"
+            onClick={() => onOpenImage(image.src)}
+            aria-label={`Open image ${idx + 1}: ${image.alt}`}
+          >
+            <img src={image.src} className="carousel-img" alt={image.alt} />
+          </button>
+        ))}
+      </section>
+
+      <section className="pitch" aria-label="Brand statement">
+        <p>
+          Even in challenging times, whether markets shift or headlines change,
+          your brand deserves clarity, confidence, and creative impact. I build
+          websites and visuals that do not just survive uncertainty. They stand
+          out, grow trust, and open doors.
+        </p>
+        <p className="pitch-signature">- Emilio Sierra</p>
+      </section>
+    </>
+  )
+}
+
+function BlogPage() {
+  return (
+    <section className="blog" aria-label="Blog posts">
+      <article className="blog-post">
+        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+        <div className="blog-post-content">
+          <img src={card} alt="Mock blog post visual" className="blog-post-image" />
+          <div className="blog-post-text">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              viverra sem in facilisis gravida. Nullam dictum eros nec mauris
+              posuere, vel suscipit lorem fringilla.
+            </p>
+            <p>
+              Phasellus hendrerit malesuada magna, in posuere lectus pulvinar
+              non. Integer pretium, mi sed convallis faucibus, justo lorem
+              scelerisque risus, vitae feugiat arcu sem in est.
+            </p>
+            <p>
+              Curabitur varius iaculis sem, sit amet gravida felis luctus a.
+              Praesent at neque quis dui pulvinar viverra nec et risus.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+  )
+}
+
+function PortfolioDemoPage() {
+  const { demoId } = useParams()
+  const demo = portfolioDemos.find((item) => item.id === demoId)
+
+  if (!demo) {
+    return <Navigate to="/" replace />
+  }
+
+  return (
+    <section className="blog" aria-label="Portfolio demo details">
+      <article className="blog-post">
+        <h2>{demo.title}</h2>
+        <div className="blog-post-content">
+          <img src={demo.image} alt={demo.imageAlt} className="blog-post-image" />
+          <div className="blog-post-text">
+            <p>{demo.summary}</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              tempor dapibus turpis, ut pretium sem molestie nec. Aliquam erat
+              volutpat.
+            </p>
+            <p>
+              Donec interdum, odio non dictum sollicitudin, est orci egestas
+              mauris, vel interdum arcu quam in velit.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+  )
+}
+
 function App() {
-  const [currentPage, setCurrentPage] = useState('home')
   const [openSection, setOpenSection] = useState(null)
   const [openImage, setOpenImage] = useState(null)
   const [showEmail, setShowEmail] = useState(false)
@@ -202,12 +357,6 @@ function App() {
 
   const toggleSection = (name) => {
     setOpenSection(openSection === name ? null : name)
-  }
-
-  const navigateToPage = (page) => {
-    setCurrentPage(page)
-    setIsPortfolioOpen(false)
-    setOpenImage(null)
   }
 
   useEffect(() => {
@@ -254,87 +403,35 @@ function App() {
     <div className="site-shell">
       <main className="app" aria-label="Emilio Sierra portfolio">
         <SiteHeader
-          currentPage={currentPage}
           isPortfolioOpen={isPortfolioOpen}
           onPortfolioToggle={() => setIsPortfolioOpen((current) => !current)}
-          onNavigate={navigateToPage}
+          onPortfolioClose={() => setIsPortfolioOpen(false)}
+          onPrimaryNavigate={() => {
+            setIsPortfolioOpen(false)
+            setOpenImage(null)
+          }}
           portfolioMenuRef={portfolioMenuRef}
           showEmail={showEmail}
           onContactToggle={() => setShowEmail((current) => !current)}
         />
 
         <div className="contentdiv">
-          {currentPage === 'home' && (
-            <>
-              <section className="accordion" aria-label="About and services">
-                {accordionSections.map((section) => (
-                  <AccordionItem
-                    key={section.id}
-                    id={section.id}
-                    title={section.title}
-                    isOpen={openSection === section.id}
-                    onToggle={() => toggleSection(section.id)}
-                    bgImage={section.bgImage}
-                  >
-                    {section.content}
-                  </AccordionItem>
-                ))}
-              </section>
-
-              <section className="carousel" aria-label="Portfolio images">
-                {carouselImages.map((image, idx) => (
-                  <button
-                    key={image.alt}
-                    className="carousel-card"
-                    type="button"
-                    onClick={() => setOpenImage(image.src)}
-                    aria-label={`Open image ${idx + 1}: ${image.alt}`}
-                  >
-                    <img src={image.src} className="carousel-img" alt={image.alt} />
-                  </button>
-                ))}
-              </section>
-
-              <section className="pitch" aria-label="Brand statement">
-                <p>
-                  Even in challenging times, whether markets shift or headlines
-                  change, your brand deserves clarity, confidence, and creative
-                  impact. I build websites and visuals that do not just survive
-                  uncertainty. They stand out, grow trust, and open doors.
-                </p>
-                <p className="pitch-signature">- Emilio Sierra</p>
-              </section>
-            </>
-          )}
-
-          {currentPage === 'blog' && (
-            <section className="blog" aria-label="Blog posts">
-              <article className="blog-post">
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
-                <div className="blog-post-content">
-                  <img src={card} alt="Mock blog post visual" className="blog-post-image" />
-                  <div className="blog-post-text">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Donec viverra sem in facilisis gravida. Nullam dictum eros
-                      nec mauris posuere, vel suscipit lorem fringilla.
-                    </p>
-                    <p>
-                      Phasellus hendrerit malesuada magna, in posuere lectus
-                      pulvinar non. Integer pretium, mi sed convallis faucibus,
-                      justo lorem scelerisque risus, vitae feugiat arcu sem in
-                      est.
-                    </p>
-                    <p>
-                      Curabitur varius iaculis sem, sit amet gravida felis
-                      luctus a. Praesent at neque quis dui pulvinar viverra nec
-                      et risus.
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </section>
-          )}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  openSection={openSection}
+                  onToggleSection={toggleSection}
+                  onOpenImage={setOpenImage}
+                />
+              }
+            />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/portfolio" element={<Navigate to="/portfolio/demo-site-1" replace />} />
+            <Route path="/portfolio/:demoId" element={<PortfolioDemoPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
 
           <SocialFooter />
         </div>
