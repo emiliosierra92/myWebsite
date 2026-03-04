@@ -535,6 +535,10 @@ function PortfolioDemoPage() {
     return <DemoSiteOnePage />
   }
 
+  if (demoId === 'demo-site-2') {
+    return null
+  }
+
   return (
     <section className="blog" aria-label="Portfolio demo details">
       <article className="blog-post">
