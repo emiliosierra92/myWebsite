@@ -301,9 +301,6 @@ function BlogPage() {
               Today, Tuesday, March 3, 2026 My Website has officially launched
               live on the internet. Thank you, Everyone!
             </p>
-            <p className="blog-post-timemark">
-              Time mark: Tuesday, March 3, 2026 at 11:59 PM ET
-            </p>
           </div>
         </div>
       </article>

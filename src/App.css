@@ -408,12 +408,6 @@
   margin-bottom: 0;
 }
 
-.blog-post-timemark {
-  font-size: 0.86rem;
-  color: var(--color-ink-600);
-  font-weight: 500;
-}
-
 .footer {
   margin-top: 0.35rem;
   padding-top: 0.2rem;
