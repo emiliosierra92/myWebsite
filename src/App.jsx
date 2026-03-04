@@ -65,6 +65,17 @@ const portfolioLinks = [
   { label: 'Demo Site 5', href: 'https://example.com/demo-site-5' },
 ]
 
+const socialLinks = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/emiliosierra/' },
+  { label: 'Instagram', href: 'https://www.instagram.com/reydehonduras/' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@VAMPIRE6KING9' },
+  { label: 'Twitch', href: 'https://www.twitch.tv/vampire6king9' },
+  {
+    label: 'PayPal',
+    href: 'https://www.paypal.com/donate/?hosted_button_id=JUB8DGZM5F7EG',
+  },
+]
+
 function AccordionItem({ id, title, isOpen, onToggle, children, bgImage }) {
   const contentId = `${id}-content`
   const buttonId = `${id}-trigger`
@@ -99,7 +110,90 @@ function AccordionItem({ id, title, isOpen, onToggle, children, bgImage }) {
   )
 }
 
+function SiteHeader({
+  currentPage,
+  isPortfolioOpen,
+  onPortfolioToggle,
+  onNavigate,
+  portfolioMenuRef,
+  showEmail,
+  onContactToggle,
+}) {
+  return (
+    <header className="topdiv">
+      <nav className="nav" aria-label="Primary navigation">
+        <button
+          className={`nav-link-button${currentPage === 'home' ? ' active' : ''}`}
+          type="button"
+          onClick={() => onNavigate('home')}
+        >
+          Home
+        </button>
+        <div className="nav-dropdown" ref={portfolioMenuRef}>
+          <button
+            className="nav-link-button"
+            type="button"
+            aria-haspopup="menu"
+            aria-expanded={isPortfolioOpen}
+            onClick={onPortfolioToggle}
+          >
+            Portfolio
+          </button>
+          <div
+            className={`portfolio-dropdown${isPortfolioOpen ? ' open' : ''}`}
+            role="menu"
+            aria-label="Portfolio demo links"
+          >
+            {portfolioLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                role="menuitem"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+        <button
+          className={`nav-link-button${currentPage === 'blog' ? ' active' : ''}`}
+          type="button"
+          onClick={() => onNavigate('blog')}
+        >
+          Blog
+        </button>
+      </nav>
+
+      <div className="logo-container">
+        <img src={logo} alt="Emilio Sierra logo" className="logo" />
+        <h1>EmilioSierra.com</h1>
+      </div>
+
+      <button className="contact-button" type="button" onClick={onContactToggle}>
+        {showEmail ? 'emiliosierra@aol.com' : 'Contact Me'}
+      </button>
+    </header>
+  )
+}
+
+function SocialFooter() {
+  return (
+    <footer className="footer">
+      <nav className="social-links" aria-label="Social links">
+        {socialLinks.map((link) => (
+          <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </footer>
+  )
+}
+
 function App() {
+  const [currentPage, setCurrentPage] = useState('home')
   const [openSection, setOpenSection] = useState(null)
   const [openImage, setOpenImage] = useState(null)
   const [showEmail, setShowEmail] = useState(false)
@@ -108,6 +202,12 @@ function App() {
 
   const toggleSection = (name) => {
     setOpenSection(openSection === name ? null : name)
+  }
+
+  const navigateToPage = (page) => {
+    setCurrentPage(page)
+    setIsPortfolioOpen(false)
+    setOpenImage(null)
   }
 
   useEffect(() => {
@@ -153,134 +253,90 @@ function App() {
   return (
     <div className="site-shell">
       <main className="app" aria-label="Emilio Sierra portfolio">
-        <header className="topdiv">
-          <nav className="nav" aria-label="Primary navigation">
-            <a href="#">Home</a>
-            <div className="nav-dropdown" ref={portfolioMenuRef}>
-              <button
-                className="nav-link-button"
-                type="button"
-                aria-haspopup="menu"
-                aria-expanded={isPortfolioOpen}
-                onClick={() => setIsPortfolioOpen((current) => !current)}
-              >
-                Portfolio
-              </button>
-              <div
-                className={`portfolio-dropdown${isPortfolioOpen ? ' open' : ''}`}
-                role="menu"
-                aria-label="Portfolio demo links"
-              >
-                {portfolioLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    role="menuitem"
-                    onClick={() => setIsPortfolioOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-            <a href="#">Blog</a>
-          </nav>
-
-          <div className="logo-container">
-            <img src={logo} alt="Emilio Sierra logo" className="logo" />
-            <h1>EmilioSierra.com</h1>
-          </div>
-
-          <button
-            className="contact-button"
-            type="button"
-            onClick={() => setShowEmail((current) => !current)}
-          >
-            {showEmail ? 'emiliosierra@aol.com' : 'Contact Me'}
-          </button>
-        </header>
+        <SiteHeader
+          currentPage={currentPage}
+          isPortfolioOpen={isPortfolioOpen}
+          onPortfolioToggle={() => setIsPortfolioOpen((current) => !current)}
+          onNavigate={navigateToPage}
+          portfolioMenuRef={portfolioMenuRef}
+          showEmail={showEmail}
+          onContactToggle={() => setShowEmail((current) => !current)}
+        />
 
         <div className="contentdiv">
-          <section className="accordion" aria-label="About and services">
-            {accordionSections.map((section) => (
-              <AccordionItem
-                key={section.id}
-                id={section.id}
-                title={section.title}
-                isOpen={openSection === section.id}
-                onToggle={() => toggleSection(section.id)}
-                bgImage={section.bgImage}
-              >
-                {section.content}
-              </AccordionItem>
-            ))}
-          </section>
+          {currentPage === 'home' && (
+            <>
+              <section className="accordion" aria-label="About and services">
+                {accordionSections.map((section) => (
+                  <AccordionItem
+                    key={section.id}
+                    id={section.id}
+                    title={section.title}
+                    isOpen={openSection === section.id}
+                    onToggle={() => toggleSection(section.id)}
+                    bgImage={section.bgImage}
+                  >
+                    {section.content}
+                  </AccordionItem>
+                ))}
+              </section>
 
-          <section className="carousel" aria-label="Portfolio images">
-            {carouselImages.map((image, idx) => (
-              <button
-                key={image.alt}
-                className="carousel-card"
-                type="button"
-                onClick={() => setOpenImage(image.src)}
-                aria-label={`Open image ${idx + 1}: ${image.alt}`}
-              >
-                <img src={image.src} className="carousel-img" alt={image.alt} />
-              </button>
-            ))}
-          </section>
+              <section className="carousel" aria-label="Portfolio images">
+                {carouselImages.map((image, idx) => (
+                  <button
+                    key={image.alt}
+                    className="carousel-card"
+                    type="button"
+                    onClick={() => setOpenImage(image.src)}
+                    aria-label={`Open image ${idx + 1}: ${image.alt}`}
+                  >
+                    <img src={image.src} className="carousel-img" alt={image.alt} />
+                  </button>
+                ))}
+              </section>
 
-          <section className="pitch" aria-label="Brand statement">
-            <p>
-              Even in challenging times, whether markets shift or headlines
-              change, your brand deserves clarity, confidence, and creative
-              impact. I build websites and visuals that do not just survive
-              uncertainty. They stand out, grow trust, and open doors.
-            </p>
-            <p className="pitch-signature">- Emilio Sierra</p>
-          </section>
+              <section className="pitch" aria-label="Brand statement">
+                <p>
+                  Even in challenging times, whether markets shift or headlines
+                  change, your brand deserves clarity, confidence, and creative
+                  impact. I build websites and visuals that do not just survive
+                  uncertainty. They stand out, grow trust, and open doors.
+                </p>
+                <p className="pitch-signature">- Emilio Sierra</p>
+              </section>
+            </>
+          )}
 
-          <footer className="footer">
-            <nav className="social-links" aria-label="Social links">
-              <a
-                href="https://www.linkedin.com/in/emiliosierra/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://www.instagram.com/reydehonduras/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-              <a
-                href="https://www.youtube.com/@VAMPIRE6KING9"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                YouTube
-              </a>
-              <a
-                href="https://www.twitch.tv/vampire6king9"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitch
-              </a>
-              <a
-                href="https://www.paypal.com/donate/?hosted_button_id=JUB8DGZM5F7EG"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                PayPal
-              </a>
-            </nav>
-          </footer>
+          {currentPage === 'blog' && (
+            <section className="blog" aria-label="Blog posts">
+              <article className="blog-post">
+                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+                <div className="blog-post-content">
+                  <img src={card} alt="Mock blog post visual" className="blog-post-image" />
+                  <div className="blog-post-text">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Donec viverra sem in facilisis gravida. Nullam dictum eros
+                      nec mauris posuere, vel suscipit lorem fringilla.
+                    </p>
+                    <p>
+                      Phasellus hendrerit malesuada magna, in posuere lectus
+                      pulvinar non. Integer pretium, mi sed convallis faucibus,
+                      justo lorem scelerisque risus, vitae feugiat arcu sem in
+                      est.
+                    </p>
+                    <p>
+                      Curabitur varius iaculis sem, sit amet gravida felis
+                      luctus a. Praesent at neque quis dui pulvinar viverra nec
+                      et risus.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </section>
+          )}
+
+          <SocialFooter />
         </div>
       </main>
 
