@@ -438,6 +438,82 @@
   margin-bottom: 0;
 }
 
+.demo-two-layout {
+  width: 100%;
+  max-width: none;
+  min-height: calc(100vh - (2 * clamp(0.9rem, 2vw, 1.4rem)));
+}
+
+.demo-two-topdiv {
+  width: min(100%, 1240px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.8rem, 2vw, 1.6rem);
+}
+
+.demo-two-home-button {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.2rem;
+  min-height: 2.9rem;
+  padding: 0.4rem 1rem;
+  border: 2px solid #0c5f46;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fef8de, #f5e9ba);
+  color: #0c5f46;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  box-shadow: 0 10px 24px -16px rgba(12, 55, 46, 0.55);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.demo-two-home-button:hover,
+.demo-two-home-button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px -16px rgba(12, 55, 46, 0.65);
+  outline: none;
+}
+
+.demo-two-hero-image {
+  justify-self: center;
+  width: clamp(240px, 36vw, 500px);
+  height: auto;
+  object-fit: contain;
+}
+
+.demo-two-shop-link {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #0c5f46;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.9vw, 1.25rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.demo-two-shop-link:hover,
+.demo-two-shop-link:focus-visible {
+  color: #0a4f3b;
+  outline: none;
+}
+
+.demo-two-bag-icon {
+  width: 1.55rem;
+  height: 1.55rem;
+  fill: currentColor;
+}
+
 .site-shell-demo-one {
   background: #000;
   padding: 0;
@@ -956,6 +1032,21 @@
       'title'
       'image'
       'text';
+  }
+
+  .demo-two-topdiv {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .demo-two-home-button,
+  .demo-two-shop-link {
+    justify-self: center;
+  }
+
+  .demo-two-hero-image {
+    width: min(84vw, 480px);
   }
 }
 

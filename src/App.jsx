@@ -10,6 +10,7 @@ import mermaid from './assets/images/mermaid.png'
 import shark from './assets/images/shark.jpeg'
 import xmas from './assets/images/xmas.png'
 import pk from './assets/images/pk.png'
+import luckybird from './assets/images/luckybird.png'
 import pizzakingVideo from './assets/media/pizzaking.mp4'
 
 const accordionSections = [
@@ -523,6 +524,27 @@ function DemoSiteOnePage() {
   )
 }
 
+function DemoSiteTwoPage() {
+  return (
+    <section className="demo-two-layout" aria-label="Demo Site 2 layout scaffold">
+      <section id="topdiv" className="demo-two-topdiv">
+        <Link to="/" className="demo-two-home-button">
+          Home
+        </Link>
+
+        <img src={luckybird} alt="Lucky Bird hero image" className="demo-two-hero-image" />
+
+        <a href="#shop" className="demo-two-shop-link" aria-label="Shop now">
+          <span>Shop Now</span>
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true" className="demo-two-bag-icon">
+            <path d="M8 8V7a4 4 0 1 1 8 0v1h2.1a1 1 0 0 1 1 .89l1.2 11A1 1 0 0 1 19.31 21H4.69a1 1 0 0 1-.99-1.11l1.2-11a1 1 0 0 1 1-.89H8Zm2 0h4V7a2 2 0 1 0-4 0v1Zm-2 4a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2H8Zm8 0a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2H16Z" />
+          </svg>
+        </a>
+      </section>
+    </section>
+  )
+}
+
 function PortfolioDemoPage() {
   const { demoId } = useParams()
   const demo = portfolioDemos.find((item) => item.id === demoId)
@@ -536,7 +558,7 @@ function PortfolioDemoPage() {
   }
 
   if (demoId === 'demo-site-2') {
-    return null
+    return <DemoSiteTwoPage />
   }
 
   return (
