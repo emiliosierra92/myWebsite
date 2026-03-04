@@ -56,6 +56,14 @@
   overflow: hidden;
 }
 
+.app-demo-two {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
 .contentdiv {
   display: flex;
   flex-direction: column;

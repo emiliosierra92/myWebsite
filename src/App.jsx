@@ -622,7 +622,10 @@ function App() {
     <div
       className={`site-shell${isDemoSiteOne ? ' site-shell-demo-one' : ''}${isDemoSiteTwo ? ' site-shell-demo-two' : ''}`}
     >
-      <main className={`app${isDemoSiteOne ? ' app-demo-one' : ''}`} aria-label="Emilio Sierra portfolio">
+      <main
+        className={`app${isDemoSiteOne ? ' app-demo-one' : ''}${isDemoSiteTwo ? ' app-demo-two' : ''}`}
+        aria-label="Emilio Sierra portfolio"
+      >
         {!isDemoSiteOne && !isBlankSlateDemo && (
           <SiteHeader
             isPortfolioOpen={isPortfolioOpen}
