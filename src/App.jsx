@@ -291,23 +291,16 @@ function BlogPage() {
   return (
     <section className="blog" aria-label="Blog posts">
       <article className="blog-post">
-        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+        <h2 className="blog-launch-title">EmilioSierra.com is Born.</h2>
         <div className="blog-post-content">
           <img src={card} alt="Mock blog post visual" className="blog-post-image" />
           <div className="blog-post-text">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              viverra sem in facilisis gravida. Nullam dictum eros nec mauris
-              posuere, vel suscipit lorem fringilla.
+              Today, Tuesday, March 3, 2026 My Website has officially launched
+              live on the internet. Thank you, Everyone!
             </p>
-            <p>
-              Phasellus hendrerit malesuada magna, in posuere lectus pulvinar
-              non. Integer pretium, mi sed convallis faucibus, justo lorem
-              scelerisque risus, vitae feugiat arcu sem in est.
-            </p>
-            <p>
-              Curabitur varius iaculis sem, sit amet gravida felis luctus a.
-              Praesent at neque quis dui pulvinar viverra nec et risus.
+            <p className="blog-post-timemark">
+              Time mark: Tuesday, March 3, 2026 at 11:59 PM ET
             </p>
           </div>
         </div>
