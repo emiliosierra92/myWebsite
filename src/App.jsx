@@ -506,9 +506,13 @@ function DemoSiteOnePage() {
       </section>
 
       <section id="geolocation" className="demo-one-block demo-one-geolocation">
-        <h2>geolocation</h2>
-        <p>1234 Sample Avenue, Miami, FL 33176</p>
-        <a href="#geolocation">Open map</a>
+        <iframe
+          className="demo-one-map-widget"
+          title="Pizza King location map"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-80.3666%2C25.6660%2C-80.3110%2C25.7030&layer=mapnik&marker=25.6845%2C-80.3388"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
       </section>
 
       <section id="footer" className="demo-one-block demo-one-footer">

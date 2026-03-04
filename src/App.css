@@ -795,6 +795,18 @@
   margin: 0.35rem 0 0;
 }
 
+.demo-one-geolocation {
+  padding: 0;
+  overflow: hidden;
+}
+
+.demo-one-map-widget {
+  display: block;
+  width: 100%;
+  min-height: 320px;
+  border: 0;
+}
+
 .demo-one-footer {
   align-items: center;
   justify-content: center;
