@@ -516,8 +516,8 @@ function DemoSiteOnePage() {
       </section>
 
       <section id="footer" className="demo-one-block demo-one-footer">
-        <p>Enjoy the best food to share with your family</p>
-        <small>© Casa Sierra Mock Template 2026</small>
+        <p>Come Eat Pizza with The Pizza Kings!</p>
+        <small>© EmilioSierra.com 2026</small>
       </section>
     </section>
   )
