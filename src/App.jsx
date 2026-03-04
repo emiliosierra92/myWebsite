@@ -125,6 +125,38 @@ const socialLinks = [
   },
 ]
 
+const demoOneNavLinks = ['About us', 'Menu', 'Specials', 'La Piccola', 'Find Us']
+
+const demoOneFeatureCards = [
+  {
+    title: 'Lunch 11:00 am to 3:00 pm',
+    subtitle: 'Take out - Dinner',
+    cta: 'VIEW MENU',
+    image: xmas,
+  },
+  {
+    title: 'Sunday Brunch',
+    subtitle: 'Fresh bakery and coffee',
+    cta: 'VIEW MENU',
+    image: card,
+  },
+]
+
+const demoOneInfoTiles = [
+  {
+    title: 'Discover a hidden',
+    heading: 'Gem of Miami',
+    subheading: 'ITALIAN CUISINE',
+    cta: 'MORE INFO',
+  },
+  {
+    title: 'Discover our',
+    heading: 'Special Offers',
+    subheading: 'Seasonal family deals',
+    cta: 'VIEW OFFERS',
+  },
+]
+
 function AccordionItem({ id, title, isOpen, onToggle, children, bgImage }) {
   const contentId = `${id}-content`
   const buttonId = `${id}-trigger`
@@ -324,7 +356,84 @@ function BlogPage() {
 
 function DemoSiteOnePage() {
   return (
-    <section className="demo-one-empty" aria-label="Demo Site 1 background view" />
+    <section className="demo-one" aria-label="Demo Site 1 restaurant template">
+      <header className="demo-one-topbar">
+        <p>KENDALL</p>
+        <a href="tel:+13052715441">(305) 271 - 5441</a>
+      </header>
+
+      <nav className="demo-one-nav" aria-label="Restaurant section navigation">
+        {demoOneNavLinks.map((item) => (
+          <a key={item} href="#menu">
+            {item}
+          </a>
+        ))}
+      </nav>
+
+      <article className="demo-one-hero">
+        <img src={miami} alt="Restaurant front mood shot" className="demo-one-hero-image" />
+        <div className="demo-one-hero-copy">
+          <p className="demo-one-hero-kicker">Welcome to</p>
+          <h2>DI PAPA&apos;S</h2>
+          <p>
+            Since opening our doors in 1997 at the same location, we&apos;ve
+            prided ourselves in keeping the Italian tradition and family
+            atmosphere alive and well.
+          </p>
+          <p>
+            Di Papa&apos;s remains an icon today and still sets the standard for
+            the best pizza, New York style in Kendall, Miami.
+          </p>
+        </div>
+      </article>
+
+      <section id="menu" className="demo-one-feature-grid" aria-label="Menu highlights">
+        {demoOneFeatureCards.map((item) => (
+          <article key={item.title} className="demo-one-feature-card">
+            <img src={item.image} alt={`${item.title} feature`} />
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.subtitle}</p>
+              <a href="#menu">{item.cta}</a>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="demo-one-info-tiles" aria-label="Restaurant offers">
+        {demoOneInfoTiles.map((item) => (
+          <article key={item.heading} className="demo-one-info-tile">
+            <p>{item.title}</p>
+            <h3>{item.heading}</h3>
+            <h4>{item.subheading}</h4>
+            <a href="#offers">{item.cta}</a>
+          </article>
+        ))}
+      </section>
+
+      <section id="offers" className="demo-one-bottom-grid" aria-label="Hours and contact">
+        <article className="demo-one-hours">
+          <h3>Business Hours</h3>
+          <p>Sunday to Thursday</p>
+          <strong>6 am to 10 pm</strong>
+          <p>Fridays and Saturdays</p>
+          <strong>6 am to 10 pm</strong>
+        </article>
+        <article className="demo-one-careers">
+          <h3>Work with us</h3>
+          <p>Join our team!</p>
+          <a href="#offers">Send Resume</a>
+        </article>
+        <article className="demo-one-contact">
+          <h3>OUR LOCATION</h3>
+          <p>9877 N Kendall Dr, Miami, FL 33176</p>
+          <h3>PHONE NUMBER</h3>
+          <p>(305) 271 - 5441</p>
+          <h3>E-MAIL</h3>
+          <p>dipapasitalian@gmail.com</p>
+        </article>
+      </section>
+    </section>
   )
 }
 
