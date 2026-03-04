@@ -431,6 +431,7 @@
 .app-demo-one {
   width: 100%;
   max-width: none;
+  min-height: 100vh;
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -449,7 +450,9 @@
   gap: 0;
   width: 100%;
   max-width: none;
+  min-height: 100vh;
   margin: 0;
+  background: #efe3d1;
 }
 
 .demo-one-block {
