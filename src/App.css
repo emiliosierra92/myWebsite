@@ -42,6 +42,7 @@
 .site-shell-demo-two {
   background-image: url('./assets/images/luckybg.png');
   background-repeat: repeat;
+  background-position: center center;
   background-size: auto;
   background-attachment: fixed;
 }
