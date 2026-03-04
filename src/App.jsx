@@ -361,24 +361,28 @@ function DemoSiteOnePage() {
           kitchen has focused on fresh ingredients, warm service, and classic
           recipes with a modern Miami vibe.
         </p>
-        <p>
-          This is mock content for your template. Replace text, photos, and links
-          later with your own restaurant or brand details.
-        </p>
       </section>
 
       <section id="lunch-time" className="demo-one-block demo-one-split">
         <article className="demo-one-panel">
           <h2>lunch time</h2>
-          <p>Lunch 11:00 am to 3:00 pm</p>
-          <p>Take out - Dinner</p>
-          <a href="#menu">View menu</a>
+          <p>Monday to Friday</p>
+          <p>11:00 AM - 3:00 PM</p>
+          <p>
+            Fast lunch combos with pizza slices, pasta bowls, salads, and soft
+            drinks included.
+          </p>
+          <a href="#menu">View lunch menu</a>
         </article>
         <article id="brunch" className="demo-one-panel">
           <h2>brunch</h2>
-          <p>Sunday brunch available</p>
-          <p>Fresh bakery and coffee</p>
-          <a href="#menu">View menu</a>
+          <p>Sunday only</p>
+          <p>9:00 AM - 2:00 PM</p>
+          <p>
+            Brunch favorites including baked eggs, breakfast pizza, pastries,
+            coffee, and fresh juices.
+          </p>
+          <a href="#menu">View brunch menu</a>
         </article>
       </section>
 
@@ -386,16 +390,70 @@ function DemoSiteOnePage() {
         <h2>menu</h2>
         <div className="demo-one-menu-grid">
           <article>
-            <h3>Pizza Classics</h3>
-            <p>Margherita, Pepperoni, Garden Veggie</p>
+            <h3>regular menu</h3>
+            <h4>pizza options</h4>
+            <ul>
+              <li>Margherita Pizza</li>
+              <li>Pepperoni Pizza</li>
+              <li>Meat Lovers Pizza</li>
+              <li>BBQ Chicken Pizza</li>
+              <li>Hawaiian Pizza</li>
+              <li>Veggie Supreme Pizza</li>
+              <li>White Spinach Pizza</li>
+            </ul>
           </article>
           <article>
-            <h3>Pasta Favorites</h3>
-            <p>Alfredo, Bolognese, Seafood Linguine</p>
+            <h3>regular menu</h3>
+            <h4>pasta options</h4>
+            <ul>
+              <li>Spaghetti Bolognese</li>
+              <li>Fettuccine Alfredo</li>
+              <li>Penne Vodka</li>
+              <li>Baked Ziti</li>
+              <li>Lasagna Classica</li>
+              <li>Seafood Linguine</li>
+              <li>Pesto Chicken Penne</li>
+            </ul>
           </article>
           <article>
-            <h3>House Specials</h3>
-            <p>Family combos, lunch deals, chef picks</p>
+            <h3>sunday brunch menu</h3>
+            <ul>
+              <li>Breakfast Pizza (eggs, bacon, mozzarella)</li>
+              <li>Ricotta Pancakes</li>
+              <li>Eggs Florentine</li>
+              <li>Chicken & Waffles</li>
+              <li>French Toast with berries</li>
+              <li>Cappuccino or fresh orange juice</li>
+            </ul>
+          </article>
+          <article>
+            <h3>lunch menu</h3>
+            <ul>
+              <li>2-Slice Pizza Combo + Drink</li>
+              <li>Chicken Caesar Wrap + Fries</li>
+              <li>Pasta Bowl of the Day + Garlic Bread</li>
+              <li>Grilled Chicken Panini + Soup</li>
+              <li>Garden Salad + Soup + Drink</li>
+            </ul>
+          </article>
+          <article>
+            <h3>dinner menu</h3>
+            <ul>
+              <li>Chicken Parmesan with spaghetti</li>
+              <li>Shrimp Scampi Linguine</li>
+              <li>Steak & Mushroom Alfredo</li>
+              <li>Baked Ravioli with meat sauce</li>
+              <li>Family Pizza + Pasta Dinner Combo</li>
+            </ul>
+          </article>
+          <article>
+            <h3>house specials</h3>
+            <ul>
+              <li>Family Combo A (Large Pizza + Pasta)</li>
+              <li>Family Combo B (2 Large Pizzas + Wings)</li>
+              <li>Chef&apos;s Weekly Feature</li>
+              <li>Kids Meal Bundle</li>
+            </ul>
           </article>
         </div>
       </section>

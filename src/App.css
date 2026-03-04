@@ -645,6 +645,16 @@
   color: #284430;
   font-family: var(--font-heading);
   font-size: 0.99rem;
+  text-transform: capitalize;
+}
+
+.demo-one-menu-grid h4 {
+  margin: 0.35rem 0 0;
+  color: #7e2f1f;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .demo-one-menu-grid p {
@@ -652,6 +662,18 @@
   color: #3c342f;
   font-family: var(--font-body);
   line-height: 1.42;
+}
+
+.demo-one-menu-grid ul {
+  margin: 0.45rem 0 0;
+  padding-left: 1rem;
+}
+
+.demo-one-menu-grid li {
+  margin: 0.22rem 0;
+  color: #3c342f;
+  font-family: var(--font-body);
+  line-height: 1.34;
 }
 
 .demo-one-specials {
