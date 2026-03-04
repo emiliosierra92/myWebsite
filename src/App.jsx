@@ -460,7 +460,7 @@ function DemoSiteOnePage() {
 
       <section id="specialoffers" className="demo-one-block demo-one-specials">
         <article>
-          <h2>specialoffers</h2>
+          <h2>special offers</h2>
           <p>Planning a birthday, office event, or family celebration?</p>
           <p>
             Ask about our Party Package options for larger groups, including
