@@ -605,6 +605,7 @@
 
 .demo-one-panel a,
 .demo-one-specials a,
+.demo-one-contactbar a,
 .demo-one-geolocation a {
   display: inline-block;
   margin-top: 0.45rem;
@@ -747,59 +748,6 @@
   flex-direction: column;
 }
 
-.demo-one-contactbar {
-  gap: 0.75rem;
-  align-items: stretch;
-}
-
-.demo-one-contact-social {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.85rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #d7cbbd;
-}
-
-.demo-one-contact-social a {
-  text-decoration: none;
-  color: #a33622;
-  font-family: var(--font-heading);
-  font-size: 0.86rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  padding: 0;
-  border: 0;
-  background: transparent;
-}
-
-.demo-one-contact-columns {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.6rem;
-}
-
-.demo-one-contact-columns > div {
-  padding: 0.2rem 0.15rem;
-  text-align: left;
-}
-
-.demo-one-contact-columns h3 {
-  margin: 0;
-  color: #284430;
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.demo-one-contact-columns p {
-  margin: 0.35rem 0 0;
-}
-
 .demo-one-footer {
   align-items: center;
   justify-content: center;
@@ -900,10 +848,6 @@
   }
 
   .demo-one-business-card {
-    grid-template-columns: 1fr;
-  }
-
-  .demo-one-contact-columns {
     grid-template-columns: 1fr;
   }
 
