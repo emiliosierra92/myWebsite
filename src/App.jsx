@@ -327,10 +327,6 @@ function DemoSiteOnePage() {
     <section className="demo-one-layout" aria-label="Demo Site 1 layout scaffold">
       <section id="topdiv" className="demo-one-block demo-one-topdiv">
         <p>KENDALL</p>
-        <a href="tel:+13052715441">(305) 271 - 5441</a>
-      </section>
-
-      <section className="demo-one-block demo-one-navwrap">
         <nav className="demo-one-nav" aria-label="Demo Site 1 navigation">
           <a href="#about-us">About us</a>
           <a href="#menu">Menu</a>
@@ -338,6 +334,7 @@ function DemoSiteOnePage() {
           <a href="#brunch">Cafe</a>
           <a href="#geolocation">Find us</a>
         </nav>
+        <a href="tel:+13052715441">(305) 271 - 5441</a>
       </section>
 
       <section id="covervideo" className="demo-one-block demo-one-covervideo">

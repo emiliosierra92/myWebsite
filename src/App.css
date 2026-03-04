@@ -463,7 +463,8 @@
 }
 
 .demo-one-topdiv {
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   background: #f6ede2;
   font-family: var(--font-heading);
@@ -475,6 +476,7 @@
 
 .demo-one-topdiv p {
   margin: 0;
+  justify-self: start;
 }
 
 .demo-one-topdiv a {
@@ -482,10 +484,8 @@
   color: #a33622;
 }
 
-.demo-one-navwrap {
-  justify-content: center;
-  padding: 0.5rem;
-  background: #f9f1e8;
+.demo-one-topdiv > a {
+  justify-self: end;
 }
 
 .demo-one-nav {
@@ -493,6 +493,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.45rem;
+  justify-self: center;
 }
 
 .demo-one-nav a {
