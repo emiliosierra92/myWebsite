@@ -10,6 +10,7 @@ import mermaid from './assets/images/mermaid.png'
 import shark from './assets/images/shark.jpeg'
 import xmas from './assets/images/xmas.png'
 import pk from './assets/images/pk.png'
+import pizzakingVideo from './assets/media/pizzaking.mp4'
 
 const accordionSections = [
   {
@@ -339,9 +340,17 @@ function DemoSiteOnePage() {
       </section>
 
       <section id="covervideo" className="demo-one-block demo-one-covervideo">
+        <video
+          className="demo-one-cover-media"
+          src={pizzakingVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
         <div className="demo-one-cover-overlay">
           <p>Welcome to</p>
-          <h2>CASA SIERRA</h2>
+          <h2>Pizza King</h2>
         </div>
       </section>
 
