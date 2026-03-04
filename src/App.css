@@ -677,11 +677,19 @@
 }
 
 .demo-one-specials {
-  padding: 0.95rem 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 0.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .demo-one-specials article {
-  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #d7cbbd;
+  background: #efe3d1;
+  padding: 0.95rem 1rem;
 }
 
 .demo-one-specials p,
@@ -697,26 +705,23 @@
   margin-top: 0.35rem;
 }
 
-.demo-one-business-grid {
+.demo-one-business-card {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
-  padding: 0;
-  border: 0;
-  background: transparent;
-}
-
-.demo-one-business-card {
-  border-radius: 12px;
-  border: 1px solid #d7cbbd;
-  background: #efe3d1;
-  padding: 0.9rem 1rem;
 }
 
 .demo-one-business-card p {
   margin: 0.3rem 0 0;
   color: #3f342d;
   font-family: var(--font-body);
+}
+
+.demo-one-business-card > div {
+  border: 1px solid #d7cbbd;
+  border-radius: 10px;
+  background: #f4eadc;
+  padding: 0.78rem;
 }
 
 .demo-one-business-card a {
@@ -836,7 +841,11 @@
     flex-direction: column;
   }
 
-  .demo-one-business-grid {
+  .demo-one-specials {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-one-business-card {
     grid-template-columns: 1fr;
   }
 

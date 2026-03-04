@@ -468,19 +468,18 @@ function DemoSiteOnePage() {
           </p>
           <a href="#contactbar">Ask about party packages</a>
         </article>
-      </section>
-
-      <section id="business" className="demo-one-block demo-one-business-grid">
-        <article className="demo-one-business-card">
-          <h2>business</h2>
-          <p>Sunday to Thursday: 6:00 AM - 10:00 PM</p>
-          <p>Friday and Saturday: 6:00 AM - 11:00 PM</p>
-        </article>
-        <article className="demo-one-business-card">
-          <h2>careers</h2>
-          <p>Do you wanna work for us? We&apos;re hiring.</p>
-          <p>Send your resume and availability to join our team.</p>
-          <a href="mailto:jobs@pizzaking.com">Apply now</a>
+        <article id="business" className="demo-one-business-card">
+          <div>
+            <h2>business</h2>
+            <p>Sunday to Thursday: 6:00 AM - 10:00 PM</p>
+            <p>Friday and Saturday: 6:00 AM - 11:00 PM</p>
+          </div>
+          <div>
+            <h2>careers</h2>
+            <p>Do you wanna work for us? We&apos;re hiring.</p>
+            <p>Send your resume and availability to join our team.</p>
+            <a href="mailto:jobs@pizzaking.com">Apply now</a>
+          </div>
         </article>
       </section>
 
