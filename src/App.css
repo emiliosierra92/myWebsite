@@ -284,6 +284,7 @@
 
 .carousel {
   display: flex;
+  justify-content: center;
   gap: 0.75rem;
   overflow-x: auto;
   padding-top: 0.15rem;
