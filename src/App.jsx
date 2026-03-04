@@ -107,7 +107,7 @@ const portfolioDemos = [
   {
     id: 'demo-site-5',
     title: 'Demo Site 5',
-    image: miami,
+    image: shark,
     imageAlt: 'Preview of demo site 5',
     summary:
       'Curabitur non aliquam massa. Nulla facilisi. Proin sit amet nisl ac risus mattis pharetra non non eros.',
