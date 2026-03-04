@@ -125,6 +125,65 @@ const socialLinks = [
   },
 ]
 
+const demoSiteOneHighlights = [
+  {
+    title: 'PvP Coaching',
+    text: '1-on-1 or team coaching sessions focused on positioning, class mastery, and fast decision making.',
+    cta: 'Book Coaching',
+    target: '#coaching',
+    image: miami,
+  },
+  {
+    title: 'Ultimate PvP Guide',
+    text: 'A practical walkthrough of build fundamentals, burst windows, and arena-specific tactics.',
+    cta: 'Read the Guide',
+    target: '#guide',
+    image: shark,
+  },
+  {
+    title: 'Content & Streams',
+    text: 'Live breakdowns, narrated fights, and direct strategy analysis built for real improvement.',
+    cta: 'Watch Content',
+    target: '#content',
+    image: dolphins,
+  },
+  {
+    title: 'Guild Store',
+    text: 'Support the grind with curated drops, exclusive resources, and premium strategy packs.',
+    cta: 'Visit Store',
+    target: '#store',
+    image: xmas,
+  },
+]
+
+const demoSiteOneBuilds = [
+  'Arcanist',
+  'Necromancer',
+  'Warden',
+  'Templar',
+  'Nightblade',
+  'Dragonknight',
+  'Sorcerer',
+]
+
+const demoSiteOnePerspectives = [
+  {
+    title: 'Roleplaying in Tamriel',
+    text: 'Explore the lore-driven side of ESO and learn how roleplay depth improves game immersion.',
+    image: mermaid,
+  },
+  {
+    title: 'State of PvP Integrity',
+    text: 'A community-first discussion on competitive fairness, account trust, and healthy moderation.',
+    image: shark,
+  },
+  {
+    title: 'The Culture of Riften',
+    text: 'A close look at one of ESO’s most iconic hubs where conflict, politics, and style collide.',
+    image: beach,
+  },
+]
+
 function AccordionItem({ id, title, isOpen, onToggle, children, bgImage }) {
   const contentId = `${id}-content`
   const buttonId = `${id}-trigger`
@@ -322,12 +381,101 @@ function BlogPage() {
   )
 }
 
+function DemoSiteOnePage() {
+  return (
+    <section className="demo-one" aria-label="Demo Site 1: ESO PvP coaching layout">
+      <article className="demo-one-hero">
+        <p className="demo-one-kicker">VAMPIRE6KING9 Strategy Hub</p>
+        <h2>Master of Every Class. Champion of Every Arena.</h2>
+        <p className="demo-one-subtitle">
+          Professional ESO PvP coaching, real match breakdowns, and tested
+          strategies built for players who want measurable improvement.
+        </p>
+        <div className="demo-one-actions">
+          <a href="#coaching">Start Coaching</a>
+          <a href="#content">Watch Content</a>
+        </div>
+      </article>
+
+      <section className="demo-one-highlights" id="guide" aria-label="Key offerings">
+        {demoSiteOneHighlights.map((item) => (
+          <article key={item.title} className="demo-one-highlight-card">
+            <img src={item.image} alt={`${item.title} visual`} />
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+              <a href={item.target}>{item.cta} →</a>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="demo-one-builds" id="coaching" aria-label="PvP builds by class">
+        <header>
+          <h3>The Elder Scrolls Online PvP Builds</h3>
+          <p>
+            Choose your class path and learn rotations, burst sequencing, and
+            fight tempo control for solo and group PvP.
+          </p>
+        </header>
+        <div className="demo-one-build-grid">
+          {demoSiteOneBuilds.map((build) => (
+            <a key={build} href="#coaching">
+              {build} Build
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="demo-one-story" id="content" aria-label="Founder story">
+        <img src={card} alt="Emilio Sierra profile card" />
+        <div>
+          <h3>The Path of a True PvP Master</h3>
+          <p>
+            Since the Imperial Edition era, Emilio has competed through
+            Cyrodiil, Battlegrounds, and Imperial City with a coaching mindset
+            rooted in practical execution.
+          </p>
+          <p>
+            This format focuses on transferable skill: setup recognition,
+            movement discipline, and class-specific pressure timing.
+          </p>
+          <p className="demo-one-story-strong">
+            Come ready. Come worthy. Come fight.
+          </p>
+        </div>
+      </section>
+
+      <section className="demo-one-perspectives" id="store" aria-label="Featured perspectives">
+        <header>
+          <h3>Featured Perspectives</h3>
+          <p>Hot takes from Emilio and the community on the evolving game state.</p>
+        </header>
+        <div className="demo-one-perspective-grid">
+          {demoSiteOnePerspectives.map((item) => (
+            <article key={item.title} className="demo-one-perspective-card">
+              <img src={item.image} alt={`${item.title} illustration`} />
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
+              <a href="#content">Read Article →</a>
+            </article>
+          ))}
+        </div>
+      </section>
+    </section>
+  )
+}
+
 function PortfolioDemoPage() {
   const { demoId } = useParams()
   const demo = portfolioDemos.find((item) => item.id === demoId)
 
   if (!demo) {
     return <Navigate to="/" replace />
+  }
+
+  if (demoId === 'demo-site-1') {
+    return <DemoSiteOnePage />
   }
 
   return (
