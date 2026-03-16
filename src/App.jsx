@@ -81,7 +81,7 @@ const portfolioDemos = [
     image: miami,
     imageAlt: 'Preview of demo site 1',
     summary:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat sem sit amet orci dictum, in faucibus felis vulputate.',
+      'Restaurant brand site with video hero, menu grid, and real location map for instant credibility.',
   },
   {
     id: 'demo-site-2',
@@ -89,7 +89,7 @@ const portfolioDemos = [
     image: dolphins,
     imageAlt: 'Preview of demo site 2',
     summary:
-      'Integer iaculis risus et mi luctus, vel aliquet justo malesuada. Suspendisse potenti. Sed tempus nisi non sem volutpat ultrices.',
+      'Product-style landing with bold hero, content-rich layout, and media cards for quick scan.',
   },
   {
     id: 'demo-site-3',
@@ -116,6 +116,10 @@ const portfolioDemos = [
       'Curabitur non aliquam massa. Nulla facilisi. Proin sit amet nisl ac risus mattis pharetra non non eros.',
   },
 ]
+
+const portfolioPreview = portfolioDemos.filter(
+  (demo) => demo.id === 'demo-site-1' || demo.id === 'demo-site-2',
+)
 
 const socialLinks = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/emiliosierra/' },
@@ -253,6 +257,33 @@ function SocialFooter() {
 function HomePage({ openSection, onToggleSection, onOpenImage }) {
   return (
     <>
+      <section className="portfolio-preview" aria-label="Portfolio preview section">
+        <header className="portfolio-preview-header">
+          <p className="portfolio-preview-kicker">Portfolio Preview Section</p>
+          <h2>Visual proof in the first 10 seconds.</h2>
+          <p>
+            Two live demos, two different design directions. Click a preview to open the full
+            experience.
+          </p>
+        </header>
+
+        <div className="portfolio-preview-grid">
+          {portfolioPreview.map((demo) => (
+            <Link key={demo.id} to={`/portfolio/${demo.id}`} className="portfolio-preview-card">
+              <div className="portfolio-preview-media">
+                <img src={demo.image} alt={demo.imageAlt} />
+                <span className="portfolio-preview-tag">{demo.title}</span>
+              </div>
+              <div className="portfolio-preview-body">
+                <h3>{demo.title}</h3>
+                <p>{demo.summary}</p>
+                <span className="portfolio-preview-cta">View full demo</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="accordion" aria-label="About and services">
         {accordionSections.map((section) => (
           <AccordionItem
