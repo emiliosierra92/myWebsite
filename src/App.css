@@ -73,7 +73,7 @@
 }
 
 .topdiv,
-.accordion,
+.info-section,
 .portfolio-preview,
 .carousel,
 .pitch,
@@ -216,8 +216,12 @@
   outline: none;
 }
 
-.accordion {
+.info-section {
   border-top: 1px solid var(--color-line);
+  display: grid;
+  gap: 1rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
 }
 
 .portfolio-preview {
@@ -340,83 +344,82 @@
   letter-spacing: 0.02em;
 }
 
-.accordion-item {
-  border-bottom: 1px solid var(--color-line);
-}
-
-.accordion-heading {
-  margin: 0;
-}
-
-.accordion-trigger {
-  width: 100%;
-  border: 0;
-  background: rgba(252, 253, 255, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.95rem 1rem;
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-ink-950);
-  cursor: pointer;
-  transition: background-color 180ms ease;
-}
-
-.accordion-trigger:hover,
-.accordion-trigger:focus-visible {
-  background: var(--color-brand-soft);
-  outline: none;
-}
-
-.indicator {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-brand);
-}
-
-.accordion-content {
+.info-card {
   position: relative;
-  max-height: 0;
+  border-radius: var(--radius-m);
   overflow: hidden;
-  transition: max-height 320ms ease;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 12px 28px -22px rgba(30, 58, 90, 0.5);
 }
 
-.accordion-content::before {
+.info-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: var(--accordion-bg-image);
+  background-image: var(--info-bg-image);
   background-size: cover;
   background-position: center;
-  filter: saturate(0.9);
+  opacity: 0.2;
 }
 
-.accordion-content::after {
+.info-card::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.92));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.98));
 }
 
-.accordion-content.open {
-  max-height: 500px;
-}
-
-.accordion-content-inner {
+.info-title {
   position: relative;
   z-index: 1;
-  padding: 1rem;
+  margin: 0 0 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-ink-950);
 }
 
-.accordion-content p {
+.info-body {
+  position: relative;
+  z-index: 1;
+}
+
+.info-body p {
   margin: 0;
   color: var(--color-ink-950);
   font-family: var(--font-body);
   font-size: 1.02rem;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.55;
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.services-item {
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-s);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(190, 209, 234, 0.6);
+}
+
+.services-item h3 {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-ink-950);
+}
+
+.services-item p {
+  margin: 0;
+  font-weight: 500;
+  color: var(--color-ink-700);
 }
 
 .carousel {
@@ -1282,7 +1285,7 @@
   }
 
   .topdiv,
-  .accordion,
+  .info-section,
   .portfolio-preview,
   .carousel,
   .pitch,

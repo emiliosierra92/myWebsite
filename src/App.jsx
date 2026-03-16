@@ -32,27 +32,20 @@ const accordionSections = [
     title: 'Services',
     bgImage: miami,
     content: (
-      <p>
-        <strong>Web Development &amp; Digital Accessibility</strong>
-        <br />
-        Development of responsive websites using HTML, CSS, and JavaScript.
-        Emphasis on performance, quality assurance, debugging, and
-        WCAG-compliant accessibility.
-        <br />
-        <br />
-        <strong>Graphic Design &amp; Visual Content Creation</strong>
-        <br />
-        Image editing and creation in Photoshop. Services include retouching,
-        manipulation, optimization, and production of branded or event-specific
-        visuals.
-        <br />
-        <br />
-        <strong>Videography &amp; Broadcast Media Production</strong>
-        <br />
-        Event videography, live streaming setup, camera operation, and
-        post-production. Includes audio/video editing for sports, concerts,
-        festivals, or promotional material.
-      </p>
+      <ul className="services-list">
+        <li className="services-item">
+          <h3>Website Design</h3>
+          <p>Modern responsive websites for businesses and creators.</p>
+        </li>
+        <li className="services-item">
+          <h3>Branding &amp; Logo Design</h3>
+          <p>Unique logos and visual identity systems.</p>
+        </li>
+        <li className="services-item">
+          <h3>Graphic Design</h3>
+          <p>Marketing graphics, social media visuals, and digital assets.</p>
+        </li>
+      </ul>
     ),
   },
 ]
@@ -132,36 +125,14 @@ const socialLinks = [
   },
 ]
 
-function AccordionItem({ id, title, isOpen, onToggle, children, bgImage }) {
-  const contentId = `${id}-content`
-  const buttonId = `${id}-trigger`
-
+function InfoCard({ title, children, bgImage }) {
   return (
-    <article className="accordion-item">
-      <h2 className="accordion-heading">
-        <button
-          id={buttonId}
-          className="accordion-trigger"
-          type="button"
-          onClick={onToggle}
-          aria-expanded={isOpen}
-          aria-controls={contentId}
-        >
-          <span>{title}</span>
-          <span className="indicator" aria-hidden="true">
-            {isOpen ? '−' : '+'}
-          </span>
-        </button>
-      </h2>
-      <div
-        id={contentId}
-        className={`accordion-content${isOpen ? ' open' : ''}`}
-        role="region"
-        aria-labelledby={buttonId}
-        style={bgImage ? { '--accordion-bg-image': `url(${bgImage})` } : undefined}
-      >
-        <div className="accordion-content-inner">{children}</div>
-      </div>
+    <article
+      className="info-card"
+      style={bgImage ? { '--info-bg-image': `url(${bgImage})` } : undefined}
+    >
+      <h2 className="info-title">{title}</h2>
+      <div className="info-body">{children}</div>
     </article>
   )
 }
@@ -254,7 +225,7 @@ function SocialFooter() {
   )
 }
 
-function HomePage({ openSection, onToggleSection, onOpenImage }) {
+function HomePage({ onOpenImage }) {
   return (
     <>
       <section className="portfolio-preview" aria-label="Portfolio preview section">
@@ -284,18 +255,15 @@ function HomePage({ openSection, onToggleSection, onOpenImage }) {
         </div>
       </section>
 
-      <section className="accordion" aria-label="About and services">
+      <section className="info-section" aria-label="About and services">
         {accordionSections.map((section) => (
-          <AccordionItem
+          <InfoCard
             key={section.id}
-            id={section.id}
             title={section.title}
-            isOpen={openSection === section.id}
-            onToggle={() => onToggleSection(section.id)}
             bgImage={section.bgImage}
           >
             {section.content}
-          </AccordionItem>
+          </InfoCard>
         ))}
       </section>
 
@@ -691,15 +659,10 @@ function App() {
   const isDemoSiteOne = location.pathname === '/portfolio/demo-site-1'
   const isDemoSiteTwo = location.pathname === '/portfolio/demo-site-2'
   const isBlankSlateDemo = isDemoSiteTwo
-  const [openSection, setOpenSection] = useState(null)
   const [openImage, setOpenImage] = useState(null)
   const [showEmail, setShowEmail] = useState(false)
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false)
   const portfolioMenuRef = useRef(null)
-
-  const toggleSection = (name) => {
-    setOpenSection(openSection === name ? null : name)
-  }
 
   useEffect(() => {
     if (!openImage) {
@@ -770,8 +733,6 @@ function App() {
               path="/"
               element={
                 <HomePage
-                  openSection={openSection}
-                  onToggleSection={toggleSection}
                   onOpenImage={setOpenImage}
                 />
               }
@@ -787,13 +748,11 @@ function App() {
               <Route
                 path="/"
                 element={
-                  <HomePage
-                    openSection={openSection}
-                    onToggleSection={toggleSection}
-                    onOpenImage={setOpenImage}
-                  />
-                }
-              />
+                <HomePage
+                  onOpenImage={setOpenImage}
+                />
+              }
+            />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/portfolio" element={<Navigate to="/portfolio/demo-site-1" replace />} />
               <Route path="/portfolio/:demoId" element={<PortfolioDemoPage />} />
